@@ -1,6 +1,6 @@
-# PESO Magsaysay — local rebuild
+# Tech4ED Magsaysay
 
-A responsive rebuild of the provided Bubble PESO directory. Preserves all nine programs, their focal persons, the mission and vision, the official Facebook news destination, and original developer credit.
+Website for the Magsaysay Tech4ED Center ("Ready sa Tech, Ready sa Life"). Lists programs grouped by office: Tech4ED services (from the center's flyer), PESO programs with their focal persons, and MPTVI (Maximino Pellerin Sr. Technical and Vocational Institute) training programs with their contact details. Keeps the official PESO Facebook news feed and the original developer credit.
 
 ## Run locally
 

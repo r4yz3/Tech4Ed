@@ -707,3 +707,24 @@ header{padding-top:10px;padding-bottom:10px}
 .dir-row em{font-style:normal;font-size:12.5px;font-weight:600;color:var(--c);overflow-wrap:normal}
 .dir-row small{font-size:11.5px;color:var(--muted)}
 .dir-row>b{flex:none;color:var(--c)}
+/* Office contact panels under the Tech4ED and PESO program groups */
+.office-contact{grid-column:1/-1;position:relative;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:28px;margin:6px 0 10px;padding:22px 26px;border-radius:22px;background:radial-gradient(420px 220px at 0% 0%,color-mix(in srgb,var(--c) 35%,transparent),transparent 70%),linear-gradient(120deg,var(--navy),var(--navy-2));color:#fff;box-shadow:var(--shadow-lg);overflow:hidden;isolation:isolate}
+.office-contact::after{content:'';position:absolute;right:-60px;bottom:-80px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--c) 40%,transparent),transparent 70%);z-index:-1}
+.oc-brand{display:flex;align-items:center;gap:14px}
+.oc-logo{display:grid;place-items:center;flex:none;width:56px;height:56px;border-radius:16px;background:#fff;box-shadow:0 8px 18px -10px rgba(0,0,0,.6)}
+.oc-logo img{width:44px;height:44px;object-fit:contain}
+.oc-brand small{display:block;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--sun)}
+.oc-brand strong{display:block;margin-top:4px;font:800 20px/1.2 var(--head);color:#fff}
+.oc-lines{display:flex;flex-wrap:wrap;gap:10px 22px}
+.oc-line{display:flex;align-items:center;gap:12px;font-weight:600;font-size:15px;color:#fff;overflow-wrap:normal}
+a.oc-line:hover{color:var(--sun)}
+.oc-ico{display:grid;place-items:center;flex:none;width:38px;height:38px;border-radius:11px;background:rgba(255,255,255,.1);color:var(--sun);font:700 16px/1 var(--head)}
+.oc-cta{min-height:50px;padding:0 24px;border:0;background:var(--sun);color:var(--navy);box-shadow:none;font-weight:700}
+.oc-cta:hover{background:#ffc93d;transform:translateY(-1px)}
+@media(max-width:1080px){.office-contact{grid-template-columns:1fr auto}.oc-lines{grid-column:1/-1;grid-row:2}}
+@media(max-width:640px){
+  .office-contact{grid-template-columns:1fr;gap:16px;padding:20px;border-radius:18px}
+  .oc-lines{flex-direction:column;grid-row:auto}
+  .oc-cta{width:100%}
+  .oc-brand strong{font-size:18px}
+}

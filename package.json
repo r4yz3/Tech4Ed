@@ -1,1 +1,1 @@
-{"name":"peso-magsaysay","version":"1.0.0","private":true,"scripts":{"dev":"node server.mjs","start":"node server.mjs","check":"node --check public/app.js && node --check server.mjs"}}
+{"name":"peso-magsaysay","version":"1.0.0","private":true,"scripts":{"dev":"node server.mjs","start":"node server.mjs","check":"node --check public/app.js && node --check public/chat.js && node --check server.mjs"}}

@@ -389,6 +389,50 @@ body.dialog-open{overflow:hidden}
 .chat-nudge[hidden]{display:none}
 @keyframes nudge{from{opacity:0;transform:translateY(8px)}}
 
+/* ---------- Premium cards ---------- */
+.program-card,.office-card,.course-card{--lift:translateY(-4px);position:relative;border:1px solid rgba(15,23,42,.08);border-radius:20px;background:linear-gradient(180deg,#fff 0%,#fff 60%,var(--c-50,#f8fafc) 260%);box-shadow:0 1px 2px rgba(15,23,42,.04),0 8px 24px -16px rgba(15,23,42,.18);transition:transform .25s cubic-bezier(.2,.8,.2,1),box-shadow .25s,border-color .25s;overflow:hidden;isolation:isolate}
+.program-card::after,.course-card::after{content:'';position:absolute;inset:0 0 auto;height:3px;background:linear-gradient(90deg,var(--c),color-mix(in srgb,var(--c) 40%,#fff));transform:scaleX(0);transform-origin:left;transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.program-card:hover,.office-card:hover,.course-card:hover{transform:var(--lift);border-color:color-mix(in srgb,var(--c) 30%,transparent);box-shadow:0 2px 4px rgba(15,23,42,.04),0 24px 48px -20px color-mix(in srgb,var(--c) 45%,rgba(15,23,42,.35))}
+.program-card:hover::after,.course-card:hover::after{transform:scaleX(1)}
+.program-card:focus-visible,.office-card:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.program-card{padding:24px}
+.program-icon{width:46px;height:46px;border-radius:14px;font-size:20px;background:linear-gradient(135deg,var(--c-50),#fff);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--c) 18%,transparent)}
+.category{background:transparent;border:1px solid var(--line);color:var(--muted);font-size:11.5px;letter-spacing:.02em}
+.program-card h3{font-size:21px;letter-spacing:-.025em}
+.program-name{color:var(--ink);opacity:.8}
+.program-benefit{color:var(--muted)}
+.program-bottom{align-items:center;padding-top:20px}
+.program-bottom>div{border-top:1px dashed var(--line);padding-top:16px}
+.program-contact{display:flex;align-items:center;gap:10px}
+.program-contact>span{min-width:0}
+.program-contact strong{white-space:normal;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;line-height:1.3}
+.program-contact .avatar{width:34px;height:34px;font-size:12px;border:0;background:linear-gradient(135deg,var(--c),color-mix(in srgb,var(--c) 55%,#0b1f3a))}
+.contact-logo{flex:none;width:34px;height:34px;padding:2px;border-radius:50%;background:#fff;border:1px solid var(--line);object-fit:contain}
+.card-action{width:40px;height:40px;background:#fff;border:1px solid color-mix(in srgb,var(--c) 25%,var(--line));box-shadow:0 4px 10px -6px rgba(15,23,42,.25)}
+.program-card:hover .card-action{background:var(--c);border-color:var(--c);color:#fff;transform:translateX(3px) rotate(-45deg)}
+/* Office cards */
+.office-card{padding:30px 28px 26px;background:radial-gradient(420px 220px at 100% 0%,var(--c-50),transparent 70%),#fff}
+.office-card::before{height:5px;background:linear-gradient(90deg,var(--c),color-mix(in srgb,var(--c) 35%,#fff))}
+.office-count{position:absolute;top:24px;right:24px;padding:5px 11px;border-radius:999px;background:#fff;border:1px solid var(--line);font-size:12px;font-weight:600;color:var(--muted)}
+.office-count b{color:var(--c);font-weight:800}
+.office-logo{width:84px;height:84px;border-radius:24px;box-shadow:0 10px 24px -14px rgba(15,23,42,.35)}
+.office-logo img{width:68px;height:68px}
+.office-card strong{font-size:21px;letter-spacing:-.02em}
+.office-link{display:inline-flex;align-items:center;gap:6px;width:fit-content;margin-top:auto;padding:9px 14px;border-radius:10px;background:var(--c-50);transition:background .2s,color .2s}
+.office-card:hover .office-link{background:var(--c);color:#fff}
+/* Course cards */
+.course-card{padding:22px}
+.course-icon{width:44px;height:44px;border-radius:13px;background:linear-gradient(135deg,var(--sun-50),#fff);box-shadow:inset 0 0 0 1px rgba(181,127,0,.15)}
+.nc-badge{background:linear-gradient(135deg,var(--navy),var(--navy-2));box-shadow:0 4px 10px -6px rgba(11,31,58,.6)}
+.course-card h4{font-size:17.5px;letter-spacing:-.015em}
+.course-trainer{border-top:1px dashed var(--line)}
+/* Team, steps and objectives */
+.team-grid li{border-radius:16px;box-shadow:0 1px 2px rgba(15,23,42,.04);transition:transform .2s,box-shadow .2s}
+.team-grid li:hover{transform:translateY(-2px);box-shadow:var(--shadow-md)}
+.steps li{background:#fff;box-shadow:0 1px 2px rgba(15,23,42,.04),0 8px 24px -18px rgba(15,23,42,.2);border-radius:20px}
+.steps span{background:linear-gradient(135deg,var(--blue),var(--navy-2));box-shadow:0 8px 16px -8px rgba(11,95,191,.6)}
+.about-values article{border-radius:18px;background:linear-gradient(160deg,rgba(255,255,255,.08),rgba(255,255,255,.02))}
+
 /* ---------- Responsive ---------- */
 @media(max-width:1080px){
   .hero{grid-template-columns:1fr;gap:48px}
@@ -554,4 +598,17 @@ header{padding-top:10px;padding-bottom:10px}
 @media(max-width:640px){
   .govbar{display:none}
   header{margin-top:0;border-top:3px solid transparent;border-image:linear-gradient(90deg,var(--red) 0 33.3%,var(--sun) 33.3% 66.6%,var(--blue) 66.6%) 1}
+}
+@media(max-width:640px){
+  .program-card{padding:14px 14px 14px 16px;border-radius:16px}
+  .program-icon{width:40px;height:40px;border-radius:12px;font-size:17px}
+  .program-contact .avatar,.contact-logo{display:none}
+  .card-action{width:32px;height:32px;box-shadow:none}
+  .program-card:hover .card-action{transform:none}
+  .office-count{display:none}
+  .office-card{padding:16px 18px}
+  .office-logo{width:56px;height:56px;border-radius:14px}
+  .office-logo img{width:46px;height:46px}
+  .office-link{padding:0;background:none}
+  .office-card:hover .office-link{background:none;color:var(--c)}
 }

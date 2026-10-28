@@ -515,3 +515,39 @@ body.dialog-open{overflow:hidden}
   .site-footer{padding-top:56px}
   .chat-nudge{right:16px;bottom:80px}
 }
+
+/* ---------- Tulay sa Pag-Asenso branding ---------- */
+.govbar span{display:inline-flex;align-items:center;gap:8px}
+.govbar img{width:18px;height:18px;border-radius:50%;background:#fff}
+.brand img{object-fit:contain}
+.hero h1{font-size:clamp(46px,6vw,80px)}
+.hero h1 em{background:none;color:var(--red);position:relative;white-space:nowrap}
+.hero h1 em::after{content:'';position:absolute;left:0;right:.12em;bottom:.02em;height:.14em;border-radius:99px;background:linear-gradient(90deg,var(--blue),var(--sun));opacity:.85;z-index:-1}
+.hero-logo{position:relative;margin:0;padding:clamp(20px,3vw,36px);border-radius:28px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-lg);isolation:isolate}
+.hero-logo::before{content:'';position:absolute;inset:-18px -18px auto auto;width:140px;height:140px;border-radius:50%;background:radial-gradient(circle,var(--blue-100),transparent 70%);z-index:-1}
+.hero-logo::after{content:'';position:absolute;left:28px;right:28px;bottom:-1px;height:4px;border-radius:4px 4px 0 0;background:linear-gradient(90deg,var(--red) 0 33.3%,var(--sun) 33.3% 66.6%,var(--blue) 66.6%)}
+.hero-logo img{width:100%;height:auto}
+.hero-logo figcaption{display:flex;flex-direction:column;align-items:center;gap:6px;margin-top:14px;padding-top:14px;border-top:1px solid var(--line);font:700 13px/1.4 var(--head);letter-spacing:.06em;text-transform:uppercase;color:var(--ink);text-align:center}
+.hero-logo .stars{color:var(--sun);letter-spacing:.3em;font-size:14px}
+.offices .section-head p{margin-inline:auto;text-align:center}
+.office-logo{display:grid;place-items:center;width:76px;height:76px;margin-bottom:12px;border-radius:20px;background:#fff;border:1px solid var(--line);box-shadow:var(--shadow-sm)}
+.office-logo img{width:62px;height:62px;object-fit:contain}
+.office-card:hover .office-logo{border-color:var(--c)}
+.group-heading{align-items:center}
+.group-heading>div{flex:1}
+.group-logo{flex:none;width:52px;height:52px;padding:4px;border-radius:14px;background:#fff;border:1px solid var(--line);object-fit:contain}
+.group-heading h3::before{display:none}
+.footer-seals{display:flex;gap:10px;margin-top:20px}
+.footer-seals img{width:44px;height:44px;padding:3px;border-radius:12px;background:#fff;object-fit:contain}
+@media(max-width:1080px){.hero-logo{max-width:640px}}
+@media(max-width:640px){
+  .hero h1{font-size:46px}
+  .hero-logo{padding:16px;border-radius:20px}
+  .hero-logo figcaption{font-size:11px}
+  .office-card{grid-template-columns:56px 1fr}
+  .office-logo{grid-row:1/4;width:56px;height:56px;margin:0;border-radius:14px}
+  .office-logo img{width:46px;height:46px}
+  .group-heading{flex-direction:row;align-items:center;flex-wrap:wrap}
+  .group-logo{width:44px;height:44px}
+  .group-heading>span{order:3;margin-left:56px}
+}

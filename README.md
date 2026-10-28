@@ -1,6 +1,6 @@
-# Tech4ED Magsaysay
+# Tulay sa Pag-Asenso (3 in 1 V2.0)
 
-Website for the Magsaysay Tech4ED Center ("Ready sa Tech, Ready sa Life"). Lists programs grouped by office: Tech4ED services (from the center's flyer), PESO programs with their focal persons, and MPTVI (Maximino Pellerin Sr. Technical and Vocational Institute) training programs with their contact details. Keeps the official PESO Facebook news feed and the original developer credit.
+Website for Tulay sa Pag-Asenso 3 in 1 V2.0 of Bayan ng Magsaysay, Davao del Sur: "Bringing employment opportunities closer to the people." Intended domain: tulaysapag-asenso.adfirm.net. Lists programs grouped by office: Tech4ED services (from the center's flyer), PESO programs with their focal persons, and MPTVI (Maximino Pellerin Sr. Technical and Vocational Institute) training programs with their contact details. Keeps the official PESO Facebook news feed and the original developer credit.
 
 ## Run locally
 

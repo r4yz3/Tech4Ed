@@ -238,6 +238,8 @@ dialog::before{content:'';display:block;height:6px;background:var(--c,var(--blue
 .dialog-note{margin:20px 0;padding-top:18px;border-top:1px solid var(--line);font-size:13px;color:var(--muted)}
 .dialog-visit{margin-top:20px;padding:14px 16px;border-radius:12px;background:var(--sun-50);color:var(--ink);font-size:15px}
 #dialog-content .button{width:100%}
+.dialog-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media(max-width:420px){.dialog-actions{grid-template-columns:1fr}}
 body.dialog-open{overflow:hidden}
 
 /* ---------- Chat ---------- */

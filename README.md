@@ -1,6 +1,6 @@
 # Tech4ED Magsaysay
 
-Website for the Magsaysay Tech4ED Center ("Ready sa Tech, Ready sa Life"). Lists programs grouped by office: Tech4ED services (from the center's flyer), PESO programs with their focal persons, and MPTVI (programs to be added). Keeps the official PESO Facebook news feed and the original developer credit.
+Website for the Magsaysay Tech4ED Center ("Ready sa Tech, Ready sa Life"). Lists programs grouped by office: Tech4ED services (from the center's flyer), PESO programs with their focal persons, and MPTVI (Maximino Pellerin Sr. Technical and Vocational Institute) training programs with their contact details. Keeps the official PESO Facebook news feed and the original developer credit.
 
 ## Run locally
 

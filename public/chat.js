@@ -4,7 +4,7 @@ const link=(href,text)=>`<a class="chat-link" href="${href}" target="_blank" rel
 const visit=`<br><br>📍 Visit us at the <strong>${T4E_PLACE}</strong>.`;
 const program=code=>programs.find(p=>p.code===code);
 const codesOf=g=>programs.filter(p=>p.group===g).map(p=>p.code);
-function programReply(code){const p=program(code);if(p.group!=='PESO')return `<strong>${esc(p.name)}</strong>: ${esc(p.desc)}<ul>${p.items.map(i=>`<li>• ${esc(i)}</li>`).join('')}</ul>Ask the staff if it's available today and what to bring.${visit}`;return `<strong>${esc(p.code)}</strong> is the ${esc(p.name)}. ${esc(p.desc)}<br><br>${p.label?`Contact the <strong>${esc(p.contact)}</strong> office.`:`Your focal person is <strong>${esc(p.contact)}</strong> (${esc(p.role)}).`} They can confirm if it's open right now and what you'll need.${link(p.link||PESO_FB,p.link?'View focal person':'Message PESO')}`;}
+function programReply(code){const p=program(code);if(p.group==='MPTVI')return `<strong>${esc(p.name)}</strong>: ${esc(p.desc)}<br><br>Contact the <strong>MPTVI Training Center</strong> at 📞 0938-198-3735 or ✉️ mptvimagsaysay@gmail.com for schedules and requirements.${link('mailto:'+MPTVI_EMAIL,'Email MPTVI')}`;if(p.group!=='PESO')return `<strong>${esc(p.name)}</strong>: ${esc(p.desc)}<ul>${p.items.map(i=>`<li>• ${esc(i)}</li>`).join('')}</ul>Ask the staff if it's available today and what to bring.${visit}`;return `<strong>${esc(p.code)}</strong> is the ${esc(p.name)}. ${esc(p.desc)}<br><br>${p.label?`Contact the <strong>${esc(p.contact)}</strong> office.`:`Your focal person is <strong>${esc(p.contact)}</strong> (${esc(p.role)}).`} They can confirm if it's open right now and what you'll need.${link(p.link||PESO_FB,p.link?'View focal person':'Message PESO')}`;}
 function programsReply(codes,intro){return `${intro}<ul>${codes.map(c=>{const p=program(c);return `<li><button class="chat-inline" data-ask="${esc(p.code)}"><strong>${esc(p.code)}</strong> · ${esc(p.name)}</button></li>`;}).join('')}</ul>Tap one and I'll tell you more.`;}
 const one=(keys,code)=>({keys,reply:()=>programReply(code)});
 const intents=[
@@ -38,13 +38,17 @@ one(['bedo','barangay employment','employment desk','barangay'],'BEDO'),
 one(['tav','technical advisory','micro','labor standards','compliance'],'TAV'),
 one(['pesla','pre-employment','seminar'],'PESLA'),
 one(['ofw','abroad','overseas','kasambahay','domestic helper','ibang bansa'],'OFW'),
-{keys:['mptvi','vocational','tech-voc','techvoc','skills training','nc ii'],reply:()=>`MPTVI programs will be listed on this site soon. In the meantime, the Tech4ED Center can refer you to MPTVI and TESDA for technical-vocational training.${visit}`},
+one(['school-based','school based'],'School-Based'),
+one(['community-based','community based','cbt'],'Community-Based'),
+one(['soft skills','soft skill','special training','work readiness'],'Soft Skills'),
+one(['assessment','certification','certificate','nc ii','nc2','national certificate'],'Assessment'),
+{keys:['mptvi','vocational','tech-voc','techvoc','skills training','tesda','pellerin'],reply:()=>programsReply(codesOf('MPTVI'),`MPTVI (Maximino Pellerin Sr. Technical and Vocational Institute) offers:`)},
 {keys:['job','work','trabaho','hanap','looking for work','vacancy','opening','apply job','employment','hiring','employer'],reply:()=>programsReply(['PEIS','SRA','LRA','Jobs Fair','Career Support'],`Let's find you some work! These can help job seekers:`)},
 {keys:['student','estudyante','school','youth','graduate','ojt'],reply:()=>programsReply(['SPES','GIP','Balik Eskwela','CDSP','LYDO','E-Learning'],`Nice, building your future! For students and young people, check these out:`)},
 {keys:['worker','support','assist','tulong'],reply:()=>programsReply(['TUPAD','SEnA','Livelihood','OFW','AIR','RWA','CLPEP'],`I'm here to help. For workers who need support, PESO has these:`)},
 {keys:['tech4ed','center','services'],reply:()=>programsReply(codesOf('Tech4ED'),`Here's what the Tech4ED Center offers:`)},
 {keys:['peso'],reply:()=>programsReply(codesOf('PESO'),`PESO Magsaysay programs:`)},
-{keys:['programs','list','all'],reply:()=>`We have <strong>${codesOf('Tech4ED').length} Tech4ED services</strong> and <strong>${codesOf('PESO').length} PESO programs</strong>, with MPTVI programs coming soon. Ask me about "Tech4ED" or "PESO" to see the list.`},
+{keys:['programs','list','all'],reply:()=>`We have <strong>${codesOf('Tech4ED').length} Tech4ED services</strong> and <strong>${codesOf('PESO').length} PESO programs</strong>, and <strong>${codesOf('MPTVI').length} MPTVI programs</strong>. Ask me about "Tech4ED", "PESO" or "MPTVI" to see the list.`},
 {keys:['apply','application','submit','register','mag-apply','sign up'],reply:()=>`Applications aren't submitted on this website. For Tech4ED services, visit the center. For PESO programs, message PESO with the program name and they'll tell you how to apply.${link(PESO_FB,'Message PESO')}${visit}`},
 {keys:['requirement','requirements','document','documents','papers','eligib','qualif','kailangan'],reply:()=>`Requirements depend on the program and can change, so I don't want to give you an outdated list. 🙏 The staff or focal person can confirm exactly what to prepare. Which program are you interested in?`},
 {keys:['schedule','when','date','sched','kailan','announcement','news','update','latest'],reply:()=>`Announcements are posted on the official PESO Magsaysay Facebook page, and you can see the latest posts in the Updates section. For Tech4ED schedules, ask at the center.${link(PESO_FB,'Open Facebook page')}${visit}`},

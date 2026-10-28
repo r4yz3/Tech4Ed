@@ -612,3 +612,17 @@ header{padding-top:10px;padding-bottom:10px}
   .office-link{padding:0;background:none}
   .office-card:hover .office-link{background:none;color:var(--c)}
 }
+/* Programs moved up: compact heading, tighter gaps around the office cards */
+.offices{padding-bottom:48px}
+.program-section{padding-top:40px}
+.programs-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px}
+.programs-title{display:flex;align-items:center;gap:10px;font:700 13px/1 var(--body);letter-spacing:.12em;text-transform:uppercase;color:var(--blue)}
+.programs-title .dot{margin:0;background:var(--red)}
+@media(max-width:640px){.offices{padding-bottom:32px}.program-section{padding-top:28px}}
+@media(max-width:640px){
+  .group-heading{flex-wrap:nowrap;gap:12px}
+  .group-heading>div{flex:1 1 auto;min-width:0}
+  .group-heading p{display:none}
+  .group-heading h3{font-size:18px}
+  .group-heading>span{order:0;margin-left:0;font-size:12px;padding:3px 9px}
+}

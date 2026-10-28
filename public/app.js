@@ -47,7 +47,7 @@ const COURSES=[
 ];
 const SPECIAL=['Flower Arrangement','Table Skirting'];
 const MPTVI_TEAM=[
-['Leonile Escarpe','PESO Manager / CEO'],['Jekyll Sardido','Admin Operations Chief'],['Joan Navarro','Academic Affairs Head'],['Nora Mie Saban','Student Affairs Head'],
+['Leonile Escarpe','PESO Manager / CTEC'],['Jekyll Sardido','Admin Operations Chief'],['Joan Navarro','Academic Affairs Head'],['Nora Mie Saban','Student Affairs Head'],
 ['Angelo Kim Bernal','Planning Focal / Guidance Counselor'],['Wendy Fe Silvano','Skills Training Record Section Head'],['Crisan Pauner','Registrar'],['Bonnivie Tadle','Cashier']
 ];
 const initials=n=>n.split(' ').filter(w=>/^[A-Z]/.test(w)).slice(0,2).map(w=>w[0]).join('');

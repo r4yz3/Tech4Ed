@@ -6,6 +6,8 @@ const program=code=>programs.find(p=>p.code===code);
 const codesOf=g=>programs.filter(p=>p.group===g).map(p=>p.code);
 function programReply(code){const p=program(code);if(p.group==='MPTVI')return `<strong>${esc(p.name)}</strong>: ${esc(p.desc)}<br><br>Contact the <strong>MPTVI Training Center</strong> at 📞 0938-198-3735 or ✉️ mptvimagsaysay@gmail.com for schedules and requirements.${link('mailto:'+MPTVI_EMAIL,'Email MPTVI')}`;if(p.group!=='PESO')return `<strong>${esc(p.name)}</strong>: ${esc(p.desc)}<ul>${p.items.map(i=>`<li>• ${esc(i)}</li>`).join('')}</ul>Ask the staff if it's available today and what to bring.${visit}`;return `<strong>${esc(p.code)}</strong> is the ${esc(p.name)}. ${esc(p.desc)}<br><br>${p.label?`Contact the <strong>${esc(p.contact)}</strong> office.`:`Your focal person is <strong>${esc(p.contact)}</strong> (${esc(p.role)}).`} They can confirm if it's open right now and what you'll need.${link(p.link||PESO_FB,p.link?'View focal person':'Message PESO')}`;}
 function programsReply(codes,intro){return `${intro}<ul>${codes.map(c=>{const p=program(c);return `<li><button class="chat-inline" data-ask="${esc(p.code)}"><strong>${esc(p.code)}</strong> · ${esc(p.name)}</button></li>`;}).join('')}</ul>Tap one and I'll tell you more.`;}
+function courseReply(short){const list=COURSES.filter(x=>x.short===short);const c=list[0];return `<strong>${esc(c.name)}</strong> at MPTVI:<ul>${list.map(x=>`<li>• ${x.level} · ${x.modes.join(', ')}${x.trainers.length?` · Trainer: ${x.trainers.map(esc).join(', ')}`:''}</li>`).join('')}</ul>Contact the <strong>MPTVI Training Center</strong> at 📞 0938-198-3735 or ✉️ mptvimagsaysay@gmail.com for schedules and requirements.${link('mailto:'+MPTVI_EMAIL,'Email MPTVI')}`;}
+const course=(keys,short)=>({keys,reply:()=>courseReply(short)});
 const one=(keys,code)=>({keys,reply:()=>programReply(code)});
 const intents=[
 {keys:['hi','hello','hey','kumusta','kamusta','musta','good morning','good afternoon','good evening','magandang'],reply:()=>`Hi there! 👋 Glad you dropped by. Are you looking for digital skills, help with online government services, work, or training?`},
@@ -38,10 +40,19 @@ one(['bedo','barangay employment','employment desk','barangay'],'BEDO'),
 one(['tav','technical advisory','micro','labor standards','compliance'],'TAV'),
 one(['pesla','pre-employment','seminar'],'PESLA'),
 one(['ofw','abroad','overseas','kasambahay','domestic helper','ibang bansa'],'OFW'),
+course(['smaw','welding','welder','arc welding','hinang'],'SMAW'),
+course(['eim','electrical','electrician','wiring'],'EIM'),
+course(['heo','heavy equipment','excavator','backhoe'],'HEO'),
+course(['driving','driver','drive','license'],'Driving'),
+course(['vgd','graphic design','visual graphic','layout artist'],'VGD'),
+course(['bookkeeping','bookkeeper','accounting'],'Bookkeeping'),
+course(['housekeeping','housekeeper','hotel'],'Housekeeping'),
+{keys:['flower','arrangement','table skirting','skirting'],reply:()=>`MPTVI offers short special-training courses in <strong>${SPECIAL.join(' and ')}</strong>. Contact the MPTVI Training Center at 📞 0938-198-3735 for the next batch.${link('mailto:'+MPTVI_EMAIL,'Email MPTVI')}`},
+{keys:['registrar','cashier','admin','enroll','enrollment','enrol'],reply:()=>`For enrollment and records, contact the <strong>MPTVI Training Center</strong>: Registrar Crisan Pauner, Cashier Bonnivie Tadle. 📞 0938-198-3735 · ✉️ mptvimagsaysay@gmail.com${link('tel:'+MPTVI_TEL,'Call MPTVI')}`},
 one(['school-based','school based'],'School-Based'),
 one(['community-based','community based','cbt'],'Community-Based'),
 one(['soft skills','soft skill','special training','work readiness'],'Soft Skills'),
-one(['assessment','certification','certificate','nc ii','nc2','national certificate'],'Assessment'),
+one(['assessment','certification','certificate','nc ii','nc2','national certificate','assessment center'],'Assessment'),
 {keys:['mptvi','vocational','tech-voc','techvoc','skills training','tesda','pellerin'],reply:()=>programsReply(codesOf('MPTVI'),`MPTVI (Maximino Pellerin Sr. Technical and Vocational Institute) offers:`)},
 {keys:['job','work','trabaho','hanap','looking for work','vacancy','opening','apply job','employment','hiring','employer'],reply:()=>programsReply(['PEIS','SRA','LRA','Jobs Fair','Career Support'],`Let's find you some work! These can help job seekers:`)},
 {keys:['student','estudyante','school','youth','graduate','ojt'],reply:()=>programsReply(['SPES','GIP','Balik Eskwela','CDSP','LYDO','E-Learning'],`Nice, building your future! For students and young people, check these out:`)},

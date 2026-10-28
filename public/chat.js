@@ -4,7 +4,7 @@ const link=(href,text)=>`<a class="chat-link" href="${href}" target="_blank" rel
 const visit=`<br><br>📍 Visit us at the <strong>${T4E_PLACE}</strong>.`;
 const program=code=>programs.find(p=>p.code===code);
 const codesOf=g=>programs.filter(p=>p.group===g).map(p=>p.code);
-function programReply(code){const p=program(code);if(p.group!=='PESO')return `<strong>${esc(p.name)}</strong>: ${esc(p.desc)}<ul>${p.items.map(i=>`<li>• ${esc(i)}</li>`).join('')}</ul>Ask the staff if it's available today and what to bring.${visit}`;return `<strong>${esc(p.code)}</strong> is the ${esc(p.name)}. ${esc(p.desc)}<br><br>Your focal person is <strong>${esc(p.contact)}</strong> (${esc(p.role)}). They can confirm if it's open right now and what you'll need.${link(p.link||PESO_FB,p.link?'View focal person':'Message PESO')}`;}
+function programReply(code){const p=program(code);if(p.group!=='PESO')return `<strong>${esc(p.name)}</strong>: ${esc(p.desc)}<ul>${p.items.map(i=>`<li>• ${esc(i)}</li>`).join('')}</ul>Ask the staff if it's available today and what to bring.${visit}`;return `<strong>${esc(p.code)}</strong> is the ${esc(p.name)}. ${esc(p.desc)}<br><br>${p.label?`Contact the <strong>${esc(p.contact)}</strong> office.`:`Your focal person is <strong>${esc(p.contact)}</strong> (${esc(p.role)}).`} They can confirm if it's open right now and what you'll need.${link(p.link||PESO_FB,p.link?'View focal person':'Message PESO')}`;}
 function programsReply(codes,intro){return `${intro}<ul>${codes.map(c=>{const p=program(c);return `<li><button class="chat-inline" data-ask="${esc(p.code)}"><strong>${esc(p.code)}</strong> · ${esc(p.name)}</button></li>`;}).join('')}</ul>Tap one and I'll tell you more.`;}
 const one=(keys,code)=>({keys,reply:()=>programReply(code)});
 const intents=[
@@ -28,6 +28,8 @@ one(['cdsp','career development','guidance'],'CDSP'),
 one(['balik eskwela','scholarship','scholar'],'Balik Eskwela'),
 one(['gip','internship','intern'],'GIP'),
 one(['tupad','disadvantaged','displaced','emergency employment'],'TUPAD'),
+one(['sena','single entry','complaint','dispute','labor case','illegal dismissal','unpaid','sahod','sweldo'],'SEnA'),
+one(['rwa','rural','farmer','magsasaka','association'],'RWA'),
 one(['clpep','child labor'],'CLPEP'),
 one(['spes','summer job','student job','working student'],'SPES'),
 one(['livelihood','negosyo','business'],'Livelihood'),
@@ -39,7 +41,7 @@ one(['ofw','abroad','overseas','kasambahay','domestic helper','ibang bansa'],'OF
 {keys:['mptvi','vocational','tech-voc','techvoc','skills training','nc ii'],reply:()=>`MPTVI programs will be listed on this site soon. In the meantime, the Tech4ED Center can refer you to MPTVI and TESDA for technical-vocational training.${visit}`},
 {keys:['job','work','trabaho','hanap','looking for work','vacancy','opening','apply job','employment','hiring','employer'],reply:()=>programsReply(['PEIS','SRA','LRA','Jobs Fair','Career Support'],`Let's find you some work! These can help job seekers:`)},
 {keys:['student','estudyante','school','youth','graduate','ojt'],reply:()=>programsReply(['SPES','GIP','Balik Eskwela','CDSP','LYDO','E-Learning'],`Nice, building your future! For students and young people, check these out:`)},
-{keys:['worker','support','assist','tulong'],reply:()=>programsReply(['TUPAD','Livelihood','OFW','AIR','CLPEP'],`I'm here to help. For workers who need support, PESO has these:`)},
+{keys:['worker','support','assist','tulong'],reply:()=>programsReply(['TUPAD','SEnA','Livelihood','OFW','AIR','RWA','CLPEP'],`I'm here to help. For workers who need support, PESO has these:`)},
 {keys:['tech4ed','center','services'],reply:()=>programsReply(codesOf('Tech4ED'),`Here's what the Tech4ED Center offers:`)},
 {keys:['peso'],reply:()=>programsReply(codesOf('PESO'),`PESO Magsaysay programs:`)},
 {keys:['programs','list','all'],reply:()=>`We have <strong>${codesOf('Tech4ED').length} Tech4ED services</strong> and <strong>${codesOf('PESO').length} PESO programs</strong>, with MPTVI programs coming soon. Ask me about "Tech4ED" or "PESO" to see the list.`},

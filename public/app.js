@@ -26,3 +26,6 @@ document.addEventListener('keydown',e=>{if(e.key==='Escape')closeMenu();});
 const sections=document.querySelectorAll('main>section[id]');
 const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){nav.querySelectorAll('a').forEach(a=>{const active=a.hash==='#'+entry.target.id;a.classList.toggle('current',active);if(active)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current');});}});},{rootMargin:'-15% 0px -55% 0px',threshold:0});
 sections.forEach(section=>observer.observe(section));
+const fbFrame=document.querySelector('#fb-frame iframe');
+function sizeFeed(){const w=Math.max(180,Math.min(500,Math.floor(fbFrame.parentElement.clientWidth)));if(fbFrame.width==w)return;fbFrame.width=w;fbFrame.src=`https://www.facebook.com/plugins/page.php?href=${encodeURIComponent(fbFrame.dataset.page)}&tabs=timeline&width=${w}&height=${fbFrame.height}&small_header=true&adapt_container_width=true&hide_cover=false&show_facepile=false`;}
+let feedTimer;sizeFeed();addEventListener('resize',()=>{clearTimeout(feedTimer);feedTimer=setTimeout(sizeFeed,400);});

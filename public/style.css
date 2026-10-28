@@ -626,3 +626,40 @@ header{padding-top:10px;padding-bottom:10px}
   .group-heading h3{font-size:18px}
   .group-heading>span{order:0;margin-left:0;font-size:12px;padding:3px 9px}
 }
+/* Office logo tabs (merged office cards + filters) */
+.program-section{padding-top:56px}
+.program-tools{position:static;flex-direction:column;align-items:stretch;gap:14px;padding:0;margin-bottom:6px;background:none}
+.office-tabs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:0;border:0;background:none;box-shadow:none}
+.office-tabs button{--c:var(--ink);--c-50:#eef2f7;position:relative;display:flex;align-items:center;gap:12px;min-height:76px;padding:14px 16px;border:1px solid rgba(15,23,42,.08);border-radius:18px;background:#fff;text-align:left;color:var(--ink);box-shadow:0 1px 2px rgba(15,23,42,.04),0 8px 22px -18px rgba(15,23,42,.25);transition:transform .2s,box-shadow .2s,border-color .2s,background .2s;overflow:hidden}
+.office-tabs button[data-office="Tech4ED"]{--c:var(--blue);--c-50:var(--blue-50)}
+.office-tabs button[data-office="PESO"]{--c:var(--red);--c-50:var(--red-50)}
+.office-tabs button[data-office="MPTVI"]{--c:var(--sun-600);--c-50:var(--sun-50)}
+.office-tabs button::after{content:'';position:absolute;inset:auto 0 0;height:3px;background:var(--c);transform:scaleX(0);transition:transform .3s}
+.office-tabs button:hover{transform:translateY(-2px);border-color:color-mix(in srgb,var(--c) 30%,transparent);box-shadow:0 14px 30px -18px color-mix(in srgb,var(--c) 50%,rgba(15,23,42,.3))}
+.office-tabs button.active{background:linear-gradient(135deg,var(--c-50),#fff 70%);border-color:var(--c);box-shadow:0 0 0 1px var(--c),0 14px 30px -18px color-mix(in srgb,var(--c) 55%,rgba(15,23,42,.3))}
+.office-tabs button.active::after{transform:scaleX(1)}
+.office-tabs button[data-filter="All programs"].active{background:linear-gradient(135deg,var(--navy),var(--navy-2));color:#fff;border-color:var(--navy)}
+.office-tabs img{flex:none;width:44px;height:44px;padding:3px;border-radius:12px;background:#fff;border:1px solid var(--line);object-fit:contain}
+.tab-mark{flex:none;display:grid;place-items:center;align-content:center;width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,var(--red),var(--sun) 50%,var(--blue));color:#fff;font:800 17px/1 var(--head)}
+.tab-mark small{font:700 8px/1 var(--body);letter-spacing:.06em;text-transform:uppercase;margin-top:1px}
+.tab-text{display:flex;flex-direction:column;min-width:0}
+.tab-text b{font:700 15px/1.25 var(--head);letter-spacing:-.01em}
+.tab-text small{margin-top:2px;font-size:12.5px;color:var(--muted)}
+.office-tabs button.active .tab-text small{color:var(--c)}
+.office-tabs button[data-filter="All programs"].active .tab-text small{color:#c7d4e6}
+.program-tools .search{align-self:flex-end;flex:0 0 auto;width:min(420px,100%)}
+@media(max-width:1080px){.office-tabs{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:640px){
+  .program-section{padding-top:32px}
+  .office-tabs{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;width:100%;overflow:visible}
+  .office-tabs button{min-height:64px;padding:10px 12px;gap:10px;border-radius:14px;justify-content:flex-start}
+  .office-tabs img,.tab-mark{width:36px;height:36px;border-radius:10px}
+  .tab-mark{font-size:14px}
+  .tab-text b{font-size:13.5px}
+  .tab-text small{font-size:11.5px}
+  .program-tools .search{width:100%}
+}
+.tools-row{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.tools-row .results-bar{flex:1;margin:0;min-height:0;gap:12px;justify-content:flex-start}
+.program-tools .tools-row .search{align-self:auto}
+@media(max-width:640px){.tools-row{flex-direction:column-reverse;align-items:stretch;gap:10px}.tools-row .results-bar{justify-content:space-between}}
